@@ -11,10 +11,10 @@ function MadlipInput(props) {
         <Col md="3" className="input-wrapper">
             <Row>
                 <Col md="2">
-                    <label className="green-label">1</label>
+                    <label className="green-label">{props.index}</label>
                 </Col>
                 <Col md="10">
-                    <input placeholder={props.placeholder} type='text' onChange={props.handleChange} />
+                    <input placeholder={props.placeholder} value={props.state} type='text' onChange={props.onChange} />
                 </Col>
             </Row>
             <Row>
@@ -36,7 +36,12 @@ class MadlibForm extends Component {
             color: '',
             pluralNoun: '',
             adjectiveOne: '',
-            celebrityOne: ''
+            celebrityOne: '',
+
+            adectiveTwo: '',
+            nounTwo: '',
+            number: '',
+            numberTwo: ''
         }
 
 
@@ -53,10 +58,15 @@ class MadlibForm extends Component {
     render() {
 
         this.inputData = [
-            {placeholder: 'Color', prop: 'color'},
-            {placeholder: 'Noun (Plural)', prop: 'pluralNoun'},
-            {placeholder: 'Adjective', prop: 'adjectiveOne'},
-            {placeholder: 'Celebrity', prop: 'celebrityOne'}
+            {placeholder: 'Color', prop: 'color', state: this.state.color},
+            {placeholder: 'Noun (Plural)', prop: 'pluralNoun', state: this.state.pluralNoun},
+            {placeholder: 'Adjective', prop: 'adjectiveOne', state: this.state.adjectiveOne},
+            {placeholder: 'Celebrity', prop: 'celebrityOne', state: this.state.celebrityOne},
+
+            {placeholder: 'Adjective', prop: 'adjectiveTwo', state: this.state.adectiveTwo},
+            {placeholder: 'Noun', prop: 'nounTwo', state: this.state.nounTwo},
+            {placeholder: 'Number', prop: 'number', state: this.state.number},
+            {placeholder: 'Number', prop: 'numberTwo', state: this.state.numberTwo}
         ]
 
         return (
@@ -66,8 +76,8 @@ class MadlibForm extends Component {
                     <Row style={{textAlign: 'center', color: 'white'}}>
                         {
                             _.map(this.inputData, (data, indexKey) => {
-                                console.log(data);
-                                console.log('this is our indexKey: ${indexKey}');
+                                return <MadlipInput key={indexKey} index={indexKey + 1} state={data.state} placeholder={data.placeholder} 
+                                onChange={this.handleChange({inputTitle: data.prop})} />
                             })
                         }
                         
