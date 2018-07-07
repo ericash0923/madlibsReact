@@ -29,7 +29,7 @@ input {
 
 .input-description {
     color: #b3b3b3;
-    font-weight: 300px;
+    font-weight: 300;
     font-size: 12px;
 }
 
@@ -41,4 +41,20 @@ input {
     font-size: 18px;
     text-align: center;
     color: white;
+}
+
+.generate-button {
+    height: 50px;
+    width: 300px;
+    border-radius: 4px;
+    background-color: $bottegaGreen;
+    color: white;
+    font-size: 1.25em;
+}
+
+.button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
